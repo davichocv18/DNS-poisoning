@@ -1,0 +1,23 @@
+## Facebook Zone
+zone "facebook.com" IN {
+    type master;
+    file "/etc/bind/zones/facebook.com.db";
+        allow-query{ any;};
+        allow-transfer {192.168.100.17;};
+};
+
+## Facebookk Zone
+zone "facebookk.com" IN {
+    type master;
+    file "/etc/bind/zones/facebookk.com.db";
+        allow-query{ any;};
+        allow-transfer {192.168.100.17;};
+};
+
+## Reverse Zone
+zone "100.168.192.in-addr.arpa" IN {
+    type master;
+    file "/etc/bind/reverse/100.168.192.in-addr.arpa";
+        allow-query{ any;};
+        allow-transfer {192.168.100.17;};
+};

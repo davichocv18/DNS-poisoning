@@ -1,0 +1,27 @@
+; base zone file for facebook.com
+
+$TTL    2d      ;       default TTL
+$ORIGIN facebook.com.  ;       base domain-name
+
+; Start of authority RR defining the key characteristics of the zone (Domain)
+@       IN      SOA     bind01.facebook.com. admin.facebook.com. (
+                        2024051211      ; Serial number
+                        12h             ; Refresh
+                        15m             ; Retry
+                        3w              ; Expire
+                        2h              ; Negative Cache TTL
+                        )
+
+; name servers for master bind
+@       IN      NS      bind01.facebook.com.
+; name server for slave bind
+@       IN      NS      bind02.facebook.com.
+
+; IP addresses for name servers
+bind01  IN      A       192.168.100.16
+bind02  IN      A       192.168.100.17
+; IP address for www
+www     IN      A       172.17.0.2
+*	IN	CNAME	www.facebook.com.
+facebook.com.	IN	A	172.17.0.2
+

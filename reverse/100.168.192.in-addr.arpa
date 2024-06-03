@@ -1,0 +1,16 @@
+; Reverse zone file for 100.168.192.in-addr.arp
+;
+$TTL 3600
+@       IN      SOA     bind01.facebookk.com.   admin.facebookk.com. (
+                                2024051214      ; Serial
+                                3600            ; Refresh
+                                1800            ; Retry
+                                604800          ; Expire
+                                86400           ; Minium TTL
+                                )
+@       IN      NS      bind01.facebookk.com.
+@       IN      NS      bind02.facebookk.com.
+; Write your PTR Record with my IP
+16     IN      PTR     bind01.facebookk.com.
+17     IN      PTR     bind02.facebookk.com.
+18     IN      PTR     www.facebookk.com.

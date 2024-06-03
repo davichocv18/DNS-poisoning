@@ -1,0 +1,29 @@
+; base zone file for facebookk.com
+
+$TTL    2d      ;       default TTL
+$ORIGIN facebookk.com.  ;       base domain-name
+
+; Start of authority RR defining the key characteristics of the zone (Domain)
+@       IN      SOA     bind01.facebookk.com. admin.facebookk.com. (
+                        2024051211      ; Serial number
+                        12h             ; Refresh
+                        15m             ; Retry
+                        3w              ; Expire
+                        2h              ; Negative Cache TTL
+                        )
+
+; name servers for master bind
+@       IN      NS      bind01.facebookk.com.
+; name server for slave bind
+@       IN      NS      bind02.facebookk.com.
+
+; IP addresses for name servers
+bind01  IN      A     192.168.100.16
+bind02  IN      A     192.168.100.17
+; IP address for www
+www             IN      A       172.17.0.2
+*               IN      CNAME   www.facebookk.com.
+facebookk.com.   IN      A       172.17.0.2
+facebookk.com.   IN      MX      10 mail.facebookk.com.
+facebookk.com.   IN      TXT     "v=spf1 mx -all"
+;facebookk.com.   IN      AAAA    fe80::3812:c6e:ea89:98ad

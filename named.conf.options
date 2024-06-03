@@ -1,0 +1,30 @@
+acl "trusted" { #An ACL directive that defines our local area network
+
+        192.168.100.0/24;
+	192.168.100.16;
+	192.168.100.17;
+        };
+
+options {
+	directory "/var/cache/bind";
+	recursion yes;		#enable_recursion_queries
+        allow-recursion {
+                                trusted;
+                        };
+        allow-query {
+                                trusted;
+                    };
+        listen-on {
+			192.168.100.16; 192.168.100.17; #IP master and IP Slave
+                };
+        allow-transfer {
+                                trusted;
+                };
+        forwarders {
+                        8.8.8.8;
+                };
+
+	dnssec-validation auto;
+
+	listen-on-v6 { any; };
+};
